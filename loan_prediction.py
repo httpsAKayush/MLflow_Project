@@ -152,7 +152,10 @@ def mlflow_logging(model, X, y, name):
         #metrics
         (accuracy, f1, auc) = eval_metrics(y, pred)
         # Logging best parameters from gridsearch
-        mlflow.log_params(model.best_params_)
+        # mlflow.log_params(model.best_params_)
+        prefixed_params = {f"{name}_{k}": v for k, v in model.best_params_.items()}
+        mlflow.log_params(prefixed_params)
+
         #log the metrics
         mlflow.log_metric("Mean CV score", model.best_score_)
         mlflow.log_metric("Accuracy", accuracy)
