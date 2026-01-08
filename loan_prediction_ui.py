@@ -11,6 +11,7 @@ import mlflow
 import os
 
 
+
 # load the dataset
 dataset = pd.read_csv("train.csv")
 numerical_cols = dataset.select_dtypes(include=['int64','float64']).columns.tolist()
@@ -118,7 +119,7 @@ model_tree = grid_tree.fit(X_train, y_train)
 
 
 # MLflow
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_prediction")
 
 

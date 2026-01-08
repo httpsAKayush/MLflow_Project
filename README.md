@@ -1,22 +1,8 @@
-# create environment
-conda create -n MLflow-venv python=3.10
-conda activate MLflow-venv
+# run on it
+mlflow ui
+export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
+mlflow run https://github.com/httpsAKayush/MLflow_Project --experiment-name Loan_prediction
 
-
-# start mlflow server
-mlflow server \
-  --backend-store-uri sqlite:///mlflow.db \
-  --artifacts-destination ./mlruns \
-  --host 127.0.0.1 \
-  --port 5000
-
-```
-mlflow server --backend-store-uri sqlite:///mlflow.db --artifacts-destination ./mlruns --host 127.0.0.1 --port 5000
-```
-
-
-# run file
-python loan_prediction.py
 
 
 # Notes on MLflow Tracking
@@ -41,4 +27,7 @@ python loan_prediction.py
 `mlflow.log_artifact()` logs a local file or directory as an artifact, optionally taking an artifact_path to place it in within the run's artifact URI. Run artifacts can be organized into directories, so you can place the artifact in a directory this way.
 
 `mlflow.log_artifacts()` logs all the files in a given directory as artifacts, again taking an optional artifact path.
+
+
+
 
