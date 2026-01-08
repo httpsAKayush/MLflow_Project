@@ -174,7 +174,8 @@ def mlflow_logging(model, X, y, name):
         # mlflow.log_artifacts(model_dir, artifact_path=name)
         mlflow.sklearn.log_model(
             model.best_estimator_,
-            artifact_path=f"models/{name}"
+            name = name,
+            # registered_model_name = name
         )
 
         # mlflow.end_run()
