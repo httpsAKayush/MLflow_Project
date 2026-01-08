@@ -173,7 +173,6 @@ def mlflow_logging(model, X, y, name):
         #     model.best_estimator_,
         #     path=model_dir
         # )
-
         # mlflow.log_artifacts(model_dir, artifact_path=name)
         mlflow.sklearn.log_model(
             model.best_estimator_,
