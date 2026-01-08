@@ -117,8 +117,8 @@ model_tree = grid_tree.fit(X_train, y_train)
 
 
 # MLflow
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("Loan_prediction")
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_experiment("Loan_prediction")
 
 
 # Model evelaution metrics
@@ -176,9 +176,6 @@ def mlflow_logging(model, X, y, name):
             model.best_estimator_,
             artifact_path=f"models/{name}"
         )
-
-         
-        
 
         # mlflow.end_run()
 
