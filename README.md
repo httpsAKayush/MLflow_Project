@@ -9,10 +9,9 @@ mlflow run https://github.com/httpsAKayush/MLflow_Project --experiment-name Loan
 
 # run server sqllite # using loan_prediction.py
 ```
-mlflow server --backend-store-uri sqlite:///mlflow.db --artifacts-destination ./
+mlflow server --backend-store-uri sqlite:///mlflow.db --artifacts-destination ./mlruns --host 127.0.0.1 --port 5000
 ```
 ```
-mlruns --host 127.0.0.1 --port 5000
 export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
 mlflow run https://github.com/httpsAKayush/MLflow_Project --experiment-name Loan_prediction
 ```
