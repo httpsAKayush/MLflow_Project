@@ -145,9 +145,11 @@ def eval_metrics(actual, pred):
 
 def mlflow_logging(model, X, y, name):
     
-     with mlflow.start_run() as run:
-        run_id = run.info.run_id
-        mlflow.set_tag("run_id", run_id)      
+        if mlflow.start_run() is None:
+            mlflow.start_run()
+
+        # run_id = run.info.run_id
+        # mlflow.set_tag("run_id", run_id)      
         pred = model.predict(X)
         #metrics
         (accuracy, f1, auc) = eval_metrics(y, pred)
