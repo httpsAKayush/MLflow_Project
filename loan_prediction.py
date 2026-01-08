@@ -144,7 +144,7 @@ def eval_metrics(actual, pred):
 
 
 def mlflow_logging(model, X, y, name):
-    
+    with mlflow.start_run(nested=True):
     #  with mlflow.start_run() as run:
         # run_id = run.info.run_id
         # mlflow.set_tag("run_id", run_id)      
