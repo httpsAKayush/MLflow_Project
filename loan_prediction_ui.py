@@ -166,20 +166,20 @@ def mlflow_logging(model, X, y, name):
         mlflow.set_tag("model_type", type(model.best_estimator_).__name__)
 
         # Logging artifacts and model
-        mlflow.log_artifact("plots/ROC_curve.png")
-        #mlflow.log_artifact("2/models",artifact_path="model_artifacts")
-        # mlflow.sklearn.log_model(
-        #     model.best_estimator_,
-        #     name=name
-        # )
-        model_dir = f"models/model_{name}"
-
-        mlflow.sklearn.save_model(
+        # mlflow.log_artifact("plots/ROC_curve.png")
+        mlflow.log_artifact("2/models",artifact_path="model_artifacts")
+        mlflow.sklearn.log_model(
             model.best_estimator_,
-            path=model_dir
+            name=name
         )
+        # model_dir = f"models/model_{name}"
 
-        mlflow.log_artifacts(model_dir, artifact_path=name)
+        # mlflow.sklearn.save_model(
+        #     model.best_estimator_,
+        #     path=model_dir
+        # )
+
+        # mlflow.log_artifacts(model_dir, artifact_path=name)
 
          
         
