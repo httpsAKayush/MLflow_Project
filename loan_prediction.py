@@ -145,7 +145,7 @@ def eval_metrics(actual, pred):
 
 def mlflow_logging(model, X, y, name):
     
-        if mlflow.start_run() is None:
+        if mlflow.active_run() is None:
             mlflow.start_run()
 
         # run_id = run.info.run_id
