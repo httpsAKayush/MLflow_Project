@@ -1,9 +1,12 @@
-# run on it
+# run through ui # using loan_prediction_ui.py
 mlflow ui
 export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
 mlflow run https://github.com/httpsAKayush/MLflow_Project --experiment-name Loan_prediction
 
-
+# run through server sqllite # using loan_prediction.py
+mlflow server --backend-store-uri sqlite:///mlflow.db --artifacts-destination ./mlruns --host 127.0.0.1 --port 5000
+export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
+mlflow run https://github.com/httpsAKayush/MLflow_Project --experiment-name Loan_prediction
 
 # Notes on MLflow Tracking
 `mlflow.set_tracking_url()` coneects to a tracking URI. You can also set the MLFLOW_TRACKING_URI environment variavle to have MLflow find a URI from there. In both casis, the URI can either be a HTTP/HTTPS URI for a remote server, a database connection string, or a local path to log fata to directory. The URI defaults to mlruns.
