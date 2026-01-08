@@ -145,9 +145,7 @@ def eval_metrics(actual, pred):
 
 def mlflow_logging(model, X, y, name):
     
-        if mlflow.active_run() is None:
-            mlflow.start_run()
-
+    #  with mlflow.start_run() as run:
         # run_id = run.info.run_id
         # mlflow.set_tag("run_id", run_id)      
         pred = model.predict(X)
@@ -166,14 +164,18 @@ def mlflow_logging(model, X, y, name):
         mlflow.set_tag("model_type", type(model.best_estimator_).__name__)
 
         # Logging artifacts and model
-        mlflow.log_artifact("plots/ROC_curve.png")  
-        model_dir = f"models/model_{name}"
-        mlflow.sklearn.save_model(
-            model.best_estimator_,
-            path=model_dir
-        )
+        mlflow.log_artifact("plots/ROC_curve.png",artifact_path="plots")  
+        # model_dir = f"models/model_{name}"
+        # mlflow.sklearn.save_model(
+        #     model.best_estimator_,
+        #     path=model_dir
+        # )
 
-        mlflow.log_artifacts(model_dir, artifact_path=name)
+        # mlflow.log_artifacts(model_dir, artifact_path=name)
+        mlflow.sklearn.log_model(
+            model.best_estimator_,
+            artifact_path=f"models/{name}"
+        )
 
          
         
